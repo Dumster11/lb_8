@@ -2,18 +2,29 @@
 
 namespace Lb_8_1
 {
-    class MyClass
+    class Cat
     {
-        private int[] myArray = new int[] { 1, 2, 3 };
-        private string x = "x";
-        public int this[int index]
+        public string Name { get; set; }
+    }
+    class Animals
+    {
+        Cat[] data;
+
+        public Animals()
         {
-            set { myArray[index] = value; }
-            get { return myArray[index]; }
+            data = new Cat[6];
         }
-        public string this[string i]
+        public Cat this[int index]
         {
-            get { return x; }
+            get
+            {
+                return data[index];
+            }
+            set
+            {
+                data[index] = value;
+            }
+
         }
 
 
@@ -22,14 +33,15 @@ namespace Lb_8_1
     {
         static void Main(string[] args)
         {
-            MyClass instance = new MyClass();
-            instance[2] = 1;
-            for (int i = 0; i < 3; i++) ;
-            {
-                Console.WriteLine(instance["index"]);
-            }
-            Console.WriteLine(instance["index2"]);
+            Animals animal = new Animals();
+            animal[0] = new Cat() { Name = "x" };
+            animal[1] = new Cat() { Name = "y" };
+            Cat y = animal[1];
+            Cat x = animal[0];
+            Console.WriteLine(y?.Name);
+            Console.WriteLine(x?.Name);
             Console.ReadKey();
         }
+
     }
 }
